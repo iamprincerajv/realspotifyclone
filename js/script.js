@@ -19,7 +19,7 @@ function secToMinSec(seconds) {
 // GETTING THE LIST OF SONGS
 const getSongs = async (folder) => {
     currFolder = folder
-    let result = await fetch(`../songs/${folder}`);
+    let result = await fetch(`/songs/${folder}`);
     result = await result.text();
 
     let div = document.createElement('div');
@@ -86,8 +86,10 @@ async function displayAlbums() {
     for(let index = 0; index < array.length; index++) {
         const element = array[index];
 
-        if (element.href.includes("/songs/")) {
-            let folder = element.href.split("/").slice(-1)[0];
+        if (element.href.includes("/songs/") && !element.href.includes(".htaccess")) {
+
+            // HERE -1 FOR LOCAL DEV AND -2 FOR WEBHOSTMOST
+            let folder = element.href.split("/").slice(-2)[0];
 
             // Get the metadata of the folder
             let result = await fetch(`/songs/${folder}/info.json`);
