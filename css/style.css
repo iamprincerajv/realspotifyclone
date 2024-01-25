@@ -368,6 +368,7 @@ body {
         justify-content: center;
         max-height: unset;
         overflow: unset;
+        padding-bottom: 25vh;
     }
 
     .playbar {

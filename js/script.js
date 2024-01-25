@@ -1,7 +1,6 @@
 let currentSong = new Audio();
 let songs;
 let currFolder;
-// const server = "https://realspotifyclone.vercel.app";
 
 function secToMinSec(seconds) {
     if (isNaN(seconds) || seconds < 0) {
