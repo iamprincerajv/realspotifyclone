@@ -21,8 +21,8 @@ function secToMinSec(seconds) {
 const getSongs = async (folder) => {
     currFolder = folder
     let result = await fetch(`../songs/${folder}`);
-    result = await result.text();
     console.log(result);
+    result = await result.text();
 
     let div = document.createElement('div');
     div.innerHTML = result;
