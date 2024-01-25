@@ -1,7 +1,6 @@
 let currentSong = new Audio();
 let songs;
 let currFolder;
-// const server = "https://realspotifyclone.vercel.app";
 
 function secToMinSec(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -21,7 +20,6 @@ function secToMinSec(seconds) {
 const getSongs = async (folder) => {
     currFolder = folder
     let result = await fetch(`../songs/${folder}`);
-    console.log(result);
     result = await result.text();
 
     let div = document.createElement('div');
