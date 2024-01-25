@@ -1,7 +1,7 @@
 let currentSong = new Audio();
 let songs;
 let currFolder;
-const server = "https://realspotifyclone.vercel.app";
+// const server = "https://realspotifyclone.vercel.app";
 
 function secToMinSec(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -20,7 +20,7 @@ function secToMinSec(seconds) {
 // GETTING THE LIST OF SONGS
 const getSongs = async (folder) => {
     currFolder = folder
-    let result = await fetch(`${server}/songs/${folder}`);
+    let result = await fetch(`/songs/${folder}`);
     result = await result.text();
 
     let div = document.createElement('div');
@@ -74,7 +74,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let result = await fetch(`${server}/songs/`);
+    let result = await fetch(`/songs/`);
     result = await result.text();
 
     let div = document.createElement('div');
@@ -91,7 +91,7 @@ async function displayAlbums() {
             let folder = element.href.split("/").slice(-1)[0];
 
             // Get the metadata of the folder
-            let result = await fetch(`${server}/songs/${folder}/info.json`);
+            let result = await fetch(`/songs/${folder}/info.json`);
             result = await result.json();
             cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${folder}" class="card">
             <div class="play">
