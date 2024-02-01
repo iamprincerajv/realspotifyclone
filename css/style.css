@@ -243,6 +243,10 @@ body {
 .songLists .info {
     font-size: 13px;
     width: 344px;
+
+    /* when song artist field is removed */
+    display: flex;
+    align-items: center;
 }
 
 .info div {

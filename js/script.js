@@ -40,8 +40,7 @@ const getSongs = async (folder) => {
     for (const song of songs) {
         songUl.innerHTML = songUl.innerHTML + `<li> <img class="invert" src="images/music.svg" alt="">
         <div class="info">
-            <div>${song.replaceAll('%20', " ")}</div>
-            <div>Song Artist</div>
+            <div>${song.replaceAll('%20', " ").replace(".mp3", "")}</div>
         </div>
         <div class="playNow">
         <span>Play Now</span>
@@ -53,7 +52,7 @@ const getSongs = async (folder) => {
     // Attach an event listener to each song
     Array.from(document.querySelector(".songLists").getElementsByTagName("li")).forEach(e => {
         e.addEventListener("click", element => {
-            playMusic(e.querySelector(".info").firstElementChild.innerHTML);
+            playMusic(e.querySelector(".info").firstElementChild.innerHTML + ".mp3");
         });
     })
 
@@ -67,7 +66,7 @@ const playMusic = (track, pause = false) => {
         play.src = "/images/pause.svg";
     }
 
-    document.querySelector(".songInfo").innerHTML = decodeURI(track);
+    document.querySelector(".songInfo").innerHTML = decodeURI(track).replace(".mp3", "");
     document.querySelector(".songTime").innerHTML = "00:00/00:00";
 
 }
@@ -145,7 +144,7 @@ const main = async () => {
         // fix for song duration invalid input problem
         setTimeout(() => {
             document.querySelector(".songTime").innerHTML = `${secToMinSec(currentSong.currentTime)}/${secToMinSec(currentSong.duration)}`;
-        }, 3000);
+        }, 1000);
 
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
@@ -205,3 +204,4 @@ const main = async () => {
 }
 
 main();
+
