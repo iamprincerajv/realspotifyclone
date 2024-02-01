@@ -44,8 +44,8 @@ const getSongs = async (folder) => {
             <div>Song Artist</div>
         </div>
         <div class="playNow">
-            <span>Play Now</span>
-            <img class="invert" src="images/play-solid.svg" alt="">
+        <span>Play Now</span>
+        <img class="invert" src="images/play-solid.svg" alt="">
         </div>
         </li>`;
     }
@@ -89,7 +89,7 @@ async function displayAlbums() {
         if (element.href.includes("/songs/") && !element.href.includes(".htaccess")) {
 
             // HERE -1 FOR LOCAL DEV AND -2 FOR WEBHOSTMOST
-            let folder = element.href.split("/").slice(-1)[0];
+            let folder = element.href.split("/").slice(-2)[0];
 
             // Get the metadata of the folder
             let result = await fetch(`/songs/${folder}/info.json`);
