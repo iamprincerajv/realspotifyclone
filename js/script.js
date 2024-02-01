@@ -89,7 +89,7 @@ async function displayAlbums() {
         if (element.href.includes("/songs/") && !element.href.includes(".htaccess")) {
 
             // HERE -1 FOR LOCAL DEV AND -2 FOR WEBHOSTMOST
-            let folder = element.href.split("/").slice(-2)[0];
+            let folder = element.href.split("/").slice(-1)[0];
 
             // Get the metadata of the folder
             let result = await fetch(`/songs/${folder}/info.json`);
@@ -114,6 +114,10 @@ async function displayAlbums() {
         element.addEventListener("click", async item => {
             songs = await getSongs(item.currentTarget.dataset.folder);
             playMusic(songs[0]);
+
+            if(document.querySelector(".left").style.left != "0%") {
+                document.querySelector(".left").style.left = "0%";
+            }
         })
     });
 }
@@ -138,7 +142,11 @@ const main = async () => {
 
     // Listen for timeUpdate event
     currentSong.addEventListener('timeupdate', () => {
-        document.querySelector(".songTime").innerHTML = `${secToMinSec(currentSong.currentTime)}/${secToMinSec(currentSong.duration)}`;
+        // fix for song duration invalid input problem
+        setTimeout(() => {
+            document.querySelector(".songTime").innerHTML = `${secToMinSec(currentSong.currentTime)}/${secToMinSec(currentSong.duration)}`;
+        }, 3000);
+
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
 
