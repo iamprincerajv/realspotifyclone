@@ -4,7 +4,7 @@ let currFolder;
 
 function secToMinSec(seconds) {
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid Input";
+        return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -141,10 +141,7 @@ const main = async () => {
 
     // Listen for timeUpdate event
     currentSong.addEventListener('timeupdate', () => {
-        // fix for song duration invalid input problem
-        setTimeout(() => {
-            document.querySelector(".songTime").innerHTML = `${secToMinSec(currentSong.currentTime)}/${secToMinSec(currentSong.duration)}`;
-        }, 1000);
+        document.querySelector(".songTime").innerHTML = `${secToMinSec(currentSong.currentTime)}/${secToMinSec(currentSong.duration)}`;
 
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
     })
