@@ -196,6 +196,7 @@ body {
     align-items: center;
     position: fixed;
     bottom: 5px;
+    right: 0.5%;
     filter: invert(1);
     border-radius: 10px;
     background-color: white;
