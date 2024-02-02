@@ -377,7 +377,9 @@ body {
 
     .playbar {
         width: calc(100vw - 50px);
-        right: 7px;
+        /* right: 7px; */
+        left: 50%;
+        translate: -50%;
     }
 
     .songInfo {
@@ -428,14 +430,14 @@ body {
     }
 
     .header > * {
-        padding:3px;
+        padding: 7px;
     }
     .buttons > * {
         margin: 0 6px;
     }
 
     .playbar {
-        right: 7px;
+        /* right: 7px; */
         bottom: 0;
     }
 
